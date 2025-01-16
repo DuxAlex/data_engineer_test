@@ -5,7 +5,7 @@
 </div>
 
 # Teste para vaga de Engenheiro de Dados no Magazord.com.br
-Este repositório tem como fim testar os candidatos para vaga de engenheiro de dados na empresa [Nagazord](https://magazord.com.br).
+Este repositório tem como fim testar os candidatos para vaga de engenheiro de dados na empresa [Magazord](https://magazord.com.br).
 > Para esta vaga buscamos alguém apaixonado por Dados e como disponibilizar de maneira estrutura e eficiente para tomada de decisão sobre esses dados!
 
 
