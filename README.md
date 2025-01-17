@@ -37,10 +37,36 @@ Descrição:
 
 Fornecer:
  - 3 arquivos CSV simulados:
-  - **clientes.csv**: id_cliente, nome_cliente, email, telefone
-  - **produtos.csv**: id_produto, nome_produto, categoria, preco
-  - **transacoes.csv**: id_transacao, id_cliente, id_produto, quantidade, data_transacao
- - Script SQL com criação das tabelas iniciais para o banco de dados PostgreSQL.
+  - ![**cliente.csv**](/cliente.csv): id_cliente, nome_cliente, email, telefone
+  - ![**produtos.csv**](produtos.csv): id_produto, nome_produto, categoria, preco
+  - **transacoes.csv**: id_transacao, id_cliente, id_produto, quantidade, data_transacao (Arquivo particionado em 3 zips ![transacoes_1](transacoes_1.zip) ![transacoes_2](transacoes_2.zip) ![transacoes_3](transacoes_3.zip))
+ - Script SQL com criação das tabelas iniciais para o banco de dados PostgreSQL:
+```
+-- Criação da tabela de clientes
+CREATE TABLE clientes (
+    id_cliente INT PRIMARY KEY,
+    nome_cliente VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(15)
+);
+
+-- Criação da tabela de produtos
+CREATE TABLE produtos (
+    id_produto INT PRIMARY KEY,
+    nome_produto VARCHAR(100),
+    categoria VARCHAR(50),
+    preco DECIMAL(10, 2)
+);
+
+-- Criação da tabela de transações
+CREATE TABLE transacoes (
+    id_transacao INT PRIMARY KEY,
+    id_cliente INT REFERENCES clientes(id_cliente),
+    id_produto INT REFERENCES produtos(id_produto),
+    quantidade INT,
+    data_transacao DATE
+);
+```
 
 ## Parte 2: Otimização e Documentação
 Descrição:
