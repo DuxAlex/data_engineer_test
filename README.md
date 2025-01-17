@@ -11,106 +11,81 @@ Este repositório tem como fim testar os candidatos para vaga de engenheiro de d
 
 ## O teste
 
-O objetivo deste teste é garantir que suas habilidades de engenheria de dados sejam postas a prova.
-O importante é o funcionamento, o cumprimento com os requisitos, utilização de boas práticas e a documentação.
+O objetivo deste teste é avaliar as habilidades técnicas do candidato na manipulação de grandes volumes de dados, desenvolvimento de pipelines, modelagem de dados, otimização de consultas, e compreensão de arquiteturas de dados modernas.
 
-O cenário do teste é de uma empresa fictícia que está migrando para uma arquitetura moderna de dados que combina processamento em tempo real e batch. Como engenheiro de dados, você deve criar uma solução híbrida para processar, transformar e integrar dados de diversas fontes, garantindo alta performance e escalabilidade.
+### Cenário do teste
 
-## Desafios
+Uma empresa fictícia, **DataMart**, precisa processar e organizar grandes volumes de dados para análise de vendas. O conjunto de dados contém informações brutas de transações realizadas por diferentes clientes, proveniente de múltiplas fontes. A tarefa do candidato é criar um pipeline de dados funcional para limpar, transformar, e armazenar os dados para uso analítico.
 
-> [!IMPORTANT]
-> Construir pipelines de dados para processamento em batch e em tempo real.
-
-> [!IMPORTANT]
-> Implementar um modelo de dados otimizado para consultas analíticas.
-
-> [!IMPORTANT]
-> Garantir confiabilidade, integridade e desempenho ao longo do pipeline.
-
-### Parte 1: Processamento em Batch
+## Parte 1: Construção do Pipeline de Dados
 Descrição:
- - Fonte de Dados Batch:
-   - Banco de dados relacional PostgreSQL com tabelas de transações, clientes e produtos.
-   - Arquivos JSON representando logs de navegação no site da empresa.
- - Tarefas:
-   - Extração:
-     - Extrair dados do PostgreSQL e dos arquivos JSON.
-   - Transformação:
-     - Limpar e deduplicar dados de transações e logs de navegação.
-     - Normalizar os dados (e.g., nomes de clientes e produtos).
-     - Enriquecer os dados de logs de navegação com informações dos produtos (união entre logs e dados do banco).
-     - Agregar as seguintes informações:
-       - Receita total por cliente e por produto.
-       - Produtos mais visualizados por cliente (baseados nos logs).
-       - Conversão: porcentagem de visualizações que resultaram em compras por produto.
- - Entregáveis:
-   - Pipeline funcional para processamento batch utilizando ferramentas como Apache Airflow, Prefect ou scripts Python (com Pandas, SQLAlchemy ou PySpark).
+ - Fonte de Dados: Um banco de dados PostgreSQL com tabelas simuladas (transações, clientes e produtos) e arquivos CSV fornecidos.
+ - Requisitos:
+   - Criar uma pipeline para:
+     - **Extrair** dados do banco de dados e dos arquivos CSV.
+     - **Transformar** os dados para:
+      - Normalizar nomes de clientes (capitalizar).
+      - Corrigir valores ausentes (e.g., preço médio para produtos com valores nulos).
+      - Deduplicar registros.
+     - Criar uma nova tabela agregada com:
+      - Receita total por cliente.
+      - Número total de transações por cliente.
+      - Produto mais comprado por cliente.
+     - **Carregar** os dados transformados em um banco de dados final ou um data warehouse (PostgreSQL ou SQLite).
+   
+**Arquivos:**
 
-### Parte 2: Processamento em Tempo Real
+Fornecer:
+ - 3 arquivos CSV simulados:
+  - **clientes.csv**: id_cliente, nome_cliente, email, telefone
+  - **produtos.csv**: id_produto, nome_produto, categoria, preco
+  - **transacoes.csv**: id_transacao, id_cliente, id_produto, quantidade, data_transacao
+ - Script SQL com criação das tabelas iniciais para o banco de dados PostgreSQL.
+
+## Parte 2: Otimização e Documentação
 Descrição:
- - Fonte de dados em Tempo Real:
-   - Streaming de eventos Kafka contendo dados de transações em tempo real com o seguinte schema:
-     - id_transacao, id_cliente, id_produto, quantidade, timestamp.
- - Tarefas:
-   - Consumir dados do Kafka:
-     - Configurar um consumidor para processar os eventos de transações.
-   - Transformação e Agregação:
-     - Atualizar em tempo real:
-       - Receita total por produto.
-       - Contagem de transações por cliente.
-     - Detectar anomalias em transações, como compras com valores muito altos (> 3 vezes o preço médio do produto).
-   - Carregamento:
-     - Armazenar os dados em um banco de dados NoSQL (como MongoDB ou Elasticsearch) para consulta rápida.
- - Entregáveis:
-   - Pipeline funcional para processamento em tempo real utilizando Kafka e uma tecnologia de stream processing (como Spark Streaming, Flink ou Kafka Streams).
-
-### Parte 3: Modelagem e Consultas Avançadas
- - Modelagem de Dados:
-   - Criar um modelo de dados dimensional (data warehouse) para suportar análises futuras.
-     - Dimensão Cliente, Dimensão Produto, Fato Transação.
- - Consultas Analíticas:
-   - Receita total por mês e categoria de produto.
-   - Taxa de conversão por canal de entrada (baseado nos logs de navegação).
-   - Detecção de clientes churn (sem compras nos últimos 3 meses).
-  
-### Parte 4: Otimização e Documentação
  - Otimização:
-   - Garantir desempenho no processamento em batch e em tempo real utilizando:
-     - Estratégias de particionamento de dados.
-     - Uso eficiente de índices e cache em consultas.
-     - Paralelização de tarefas onde aplicável.
+   - Melhorar o desempenho do pipeline utilizando:
+     - Indexação em tabelas relevantes.
+     - Estratégias de particionamento ou paralelização no processo de transformação.
  - Documentação:
-   - Criar um README.md exmplicando:
-     - Como executar os pipelines.
-     - Decisões técnicas tomadas.
-     - Melhorias que poderiam ser feitas no pipeline.
+   - Fornecer um README.md contendo:
+    - Passos para executar o pipeline.
+    - Descrição do fluxo de trabalho.
+    - Decisões técnicas tomadas e por quê.
+  
+## Parte 3: Consultas Analíticas
+Descrição:
+ - Crie as seguintes consultas no banco de dados final:
+   - Receita total por categoria de produto.
+   - Top 5 produtos mais vendidos em um período de tempo.
+   - Número de clientes ativos (que fizeram pelo menos 1 compra) nos últimos 3 meses.
+ - Explicar como as consultas podem ser otimizadas para grandes volumes de dados.
     
 ## Entregas Esperadas
 
 > [!IMPORTANT]
-> Código fonte do pipeline de batch e tempo real.
+> Código fonte do pipeline.
 
 > [!IMPORTANT]
-> Arquivo SQL ou modelo visual para a modelagem dimensional.
+> Banco de dados final populado com os dados processados.
 
 > [!IMPORTANT]
-> Consultas SQL para as análises propostas.
+> Consultas SQL.
 
 > [!IMPORTANT]
-> Banco de dados populado (ou Snapshots exportados).
-
-> [!IMPORTANT]
-> README.md bem detalhado.
+> README.md com instruções detalhadas para execução.
 
 ## Critérios de Avaliação:
  - Completude Técnica:
-   - Todos os requisitos funcionais foram atendidos?
- - Qualidade e Eficiência do Código:
-   - O código é limpo, modular e bem estruturado?
-   - As soluções são escaláveis e eficientes?
- - Soluções Avançadas:
-   - A modelagem de dados e as consultas estão otimizadas?
-   - O pipeline em tempo real é confiável e de alto desempenho?
+   - O pipeline atende aos requisitos funcionais?
+   - As consultas fornecem os resultados corretos?
+ - Qualidade do Código:
+   - Estrutura e organização do código.
+   - Tratamento de erros.
+   - Uso de boas práticas de desenvolvimento.
+ - Eficiência:
+   - O pipeline e as consultas foram otimizados para desempenho?
  - Documentação:
    - O README fornece instruções claras e detalhadas?
  - Criatividade e Inovação:
