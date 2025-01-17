@@ -37,9 +37,9 @@ Descrição:
 
 Fornecer:
  - 3 arquivos CSV simulados:
-  - ![**cliente.csv**](/cliente.csv): id_cliente, nome_cliente, email, telefone
-  - ![**produtos.csv**](produtos.csv): id_produto, nome_produto, categoria, preco
-  - **transacoes.csv**: id_transacao, id_cliente, id_produto, quantidade, data_transacao (Arquivo particionado em 3 zips ![transacoes_1](transacoes_1.zip) ![transacoes_2](transacoes_2.zip) ![transacoes_3](transacoes_3.zip))
+  - [**cliente.csv**](/cliente.csv): id_cliente, nome_cliente, email, telefone
+  - [**produtos.csv**](produtos.csv): id_produto, nome_produto, categoria, preco
+  - **transacoes.csv**: id_transacao, id_cliente, id_produto, quantidade, data_transacao (Arquivo particionado em 3 zips [transacoes_1](transacoes_1.zip), [transacoes_2](transacoes_2.zip) e [transacoes_3](transacoes_3.zip))
  - Script SQL com criação das tabelas iniciais para o banco de dados PostgreSQL:
 ```
 -- Criação da tabela de clientes
