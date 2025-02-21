@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:12
+    container_name: magazord_postgres
+    environment:
+      POSTGRES_USER: magazord_user
+      POSTGRES_PASSWORD: magazord
+      POSTGRES_DB: magazord
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./data:/docker-entrypoint-initdb.d  # Mapeia o diretório 'data' para o diretório de inicialização do PostgreSQL
+    ports:
+      - "5432:5432"
+    networks:
+      - magazord_net
+
+networks:
+  magazord_net:
+    driver: bridge
