@@ -1,2 +1,3 @@
 .venv
 dbdata
+/ETL/final_data/cliente_final.csv
