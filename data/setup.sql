@@ -1,4 +1,4 @@
-SET datestyle = 'ISO, DMY';
+-- SET datestyle = 'ISO, DMY';
 
 -- Criação da tabela de clientes
 CREATE TABLE clientes (

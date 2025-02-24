@@ -1,0 +1,54 @@
+cliente.csv
+
+nome,sobrenome,email,telefone,id
+AALINE,ZYON,AALINEZYON@gmail.com,(23) 8354-9059,1
+AARAO,ZUZIANE,AARAOZUZIANE@outlook.com,(18) 3183-4770,2
+AARON,ZUZI,AARONZUZI@gmail.com,(22) 6077-6114,3
+
+------------
+
+produtos.csv
+
+id,Nome,Descrição,Preço,EAN
+0,Per,Industry argue program professor them describe modern involve method kid human human step.,28.28,5366679271277
+1,Him,Thing through time left each key message protect kind outside charge.,77.68,0553345077430
+2,Site,Line the lay above south energy charge American red.,18.4,0832306503721
+
+------------
+
+transacoes_1.csv
+
+id_transacao,id_cliente,id_produto,quantidade,data_transacao
+0,56892,2918,3,2023-05-25 22:44:59
+1,57295,8889,4,2022-07-27 07:15:08
+2,35364,4007,1,2020-01-29 06:56:21
+
+------------
+
+setup.sql
+
+-- Criação da tabela de clientes
+CREATE TABLE clientes (
+    id_cliente INT PRIMARY KEY,
+    nome_cliente VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(15)
+);
+
+-- Criação da tabela de produtos
+CREATE TABLE produtos (
+    id_produto INT PRIMARY KEY,
+    nome_produto VARCHAR(100),
+    categoria VARCHAR(50),
+    preco DECIMAL(10, 2)
+);
+
+-- Criação da tabela de transações
+CREATE TABLE transacoes (
+    id_transacao INT PRIMARY KEY,
+    id_cliente INT REFERENCES clientes(id_cliente),
+    id_produto INT REFERENCES produtos(id_produto),
+    quantidade INT,
+    data_transacao DATE
+);
+
