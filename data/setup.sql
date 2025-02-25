@@ -12,7 +12,7 @@ CREATE TABLE clientes (
 CREATE TABLE produtos (
     id_produto INT PRIMARY KEY,
     nome_produto VARCHAR(100),
-    categoria VARCHAR(50),
+    -- categoria VARCHAR(50),
     preco DECIMAL(10, 2)
 );
 
