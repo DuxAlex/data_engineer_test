@@ -2,14 +2,15 @@
 
 - 🐍 **Python** – Linguagem de programação para manipulação de dados e execução do pipeline.
 - 📊 **Pandas** – Biblioteca para manipulação e análise de dados.
-- 🌐 **Requests** – Biblioteca para realizar requisições HTTP.
 - 🐘 **psycopg2** – Adaptador PostgreSQL para Python, utilizado para comunicação com o banco de dados.
 - 🛠 **virtualenv** – Ferramenta para criar ambientes virtuais em Python.
 - ⚡ **SQLAlchemy** – Biblioteca para trabalhar com bancos de dados SQL de forma mais eficiente.
 - 🐋 **Docker** – Utilizado para rodar containers de ambiente e banco de dados.
-- ✈️ **Airflow** – Plataforma para orquestração de workflows e automação de pipelines de dados.
 - 🐘 **PostgreSQL (Docker)** – Banco de dados relacional utilizado no projeto.
 - ⚡ **SQL** – Para consultas e manipulação dos dados.
+nbconvert
+os
+subprocess
 
 ## 📂 Estrutura de Diretórios
 
