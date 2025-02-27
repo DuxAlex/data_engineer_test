@@ -1,2 +1,16 @@
 .venv
 dbdata
+
+# Ignorar todos os arquivos da pasta
+output_notebooks/*
+
+# Exceto pelo arquivo leiame.txt
+#!output_notebooks/leiame.txt
+
+
+ETL/final_data/*
+ETL/data_from_db/*
+
+
+!ETL/final_data/leiame.txt
+!ETL/data_from_db/leiame.txt
