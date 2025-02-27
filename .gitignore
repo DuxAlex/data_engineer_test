@@ -2,12 +2,12 @@
 dbdata
 
 # Ignorar todos os arquivos da pasta
-ETL/output_notebooks*
+ETL/output_notebooks/*
 ETL/final_data/*
 ETL/data_from_db/*
 
 
 # Exceto pelo arquivo leiame.txt
-!ETL/output_notebooksleiame.txt
+!ETL/output_notebooks/leiame.txt
 !ETL/final_data/leiame.txt
 !ETL/data_from_db/leiame.txt

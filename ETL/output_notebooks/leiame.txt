@@ -1,0 +1,1 @@
+Para não gerar alterações nos scritps principais, este diretório armazenará uma cópia dos scripts executado pelo scritp main.py usando o nbconvert.
