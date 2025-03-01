@@ -12,6 +12,7 @@ notebooks = {
     '3_load_transacao.ipynb': '3_load',
     '4_transform_total_por_cliente.ipynb': '2_transform',
     '4_load_total_por_cliente.ipynb': '3_load',
+    '1_optimize_tabelas.ipynb':'4_optimize',
     '1_extract_db_to_local.ipynb':'1_extract'
 }
 
