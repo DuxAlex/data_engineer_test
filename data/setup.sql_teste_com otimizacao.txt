@@ -1,0 +1,64 @@
+-- Definir o estilo de data
+--SET datestyle = 'ISO, DMY';
+
+-- Criação da tabela de clientes
+CREATE TABLE clientes (
+    id_cliente INT PRIMARY KEY,
+    nome_cliente VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(15)
+);
+
+-- Índices para a tabela de clientes
+CREATE INDEX IF NOT EXISTS idx_id_cliente ON clientes(id_cliente);
+CREATE INDEX IF NOT EXISTS idx_nome_cliente ON clientes(nome_cliente);
+
+-- Criação da tabela de produtos
+CREATE TABLE produtos (
+    id_produto INT PRIMARY KEY,
+    nome_produto VARCHAR(100),
+    preco DECIMAL(10, 2)
+);
+
+-- Índices para a tabela de produtos
+CREATE INDEX IF NOT EXISTS idx_id_produto ON produtos(id_produto);
+CREATE INDEX IF NOT EXISTS idx_nome_produto ON produtos(nome_produto);
+
+-- Criação da tabela de transações particionada
+CREATE TABLE transacoes (
+    id_transacao INT,
+    id_cliente INT REFERENCES clientes(id_cliente),
+    id_produto INT REFERENCES produtos(id_produto),
+    quantidade INT,
+    data_transacao DATE,
+    CONSTRAINT transacoes_pkey PRIMARY KEY (id_transacao, data_transacao)  -- Incluindo data_transacao na chave primária
+) PARTITION BY RANGE (data_transacao);  -- Particionamento baseado na coluna 'data_transacao'
+
+-- Índices para a tabela de transações
+CREATE INDEX IF NOT EXISTS idx_id_cliente_transacoes ON transacoes(id_cliente);
+CREATE INDEX IF NOT EXISTS idx_id_produto_transacoes ON transacoes(id_produto);
+CREATE INDEX IF NOT EXISTS idx_data_transacao ON transacoes(data_transacao);
+
+-- Criando as partições para a tabela transacoes (de 2020 a 2024)
+CREATE TABLE transacoes_2020 PARTITION OF transacoes 
+    FOR VALUES FROM ('2020-01-01') TO ('2020-12-31');
+CREATE TABLE transacoes_2021 PARTITION OF transacoes 
+    FOR VALUES FROM ('2021-01-01') TO ('2021-12-31');
+CREATE TABLE transacoes_2022 PARTITION OF transacoes 
+    FOR VALUES FROM ('2022-01-01') TO ('2022-12-31');
+CREATE TABLE transacoes_2023 PARTITION OF transacoes 
+    FOR VALUES FROM ('2023-01-01') TO ('2023-12-31');
+CREATE TABLE transacoes_2024 PARTITION OF transacoes 
+    FOR VALUES FROM ('2024-01-01') TO ('2024-12-31');
+
+-- Criação da tabela total_por_cliente
+CREATE TABLE total_por_cliente (
+    id_cliente INT PRIMARY KEY REFERENCES clientes(id_cliente),
+    receita DECIMAL(10, 2),
+    num_transacoes INT,
+    produto_mais_comprado INT REFERENCES produtos(id_produto)
+);
+
+-- Índices para a tabela total_por_cliente
+CREATE INDEX IF NOT EXISTS idx_id_cliente_total ON total_por_cliente(id_cliente);
+CREATE INDEX IF NOT EXISTS idx_produto_mais_comprado ON total_por_cliente(produto_mais_comprado);
