@@ -1,5 +1,6 @@
 import os
 import subprocess
+import nbformat
 
 # Dicionário com notebooks e seus respectivos diretórios
 notebooks = {
@@ -10,16 +11,31 @@ notebooks = {
     '3_transform_csv_transacoes.ipynb': '2_transform',
     '3_load_transacao.ipynb': '3_load',
     '4_transform_total_por_cliente.ipynb': '2_transform',
-    '4_load_total_por_cliente.ipynb': '3_load'
-    # '1_extract_db_to_local.ipynb': '1_extract',
+    '4_load_total_por_cliente.ipynb': '3_load',
+    '1_extract_db_to_local.ipynb':'1_extract'
 }
 
-# Criação de diretório de saída
 # Diretório de saída para os notebooks gerados
 output_dir = "output_notebooks"
-
-# Criar o diretório de saída se não existir
 os.makedirs(output_dir, exist_ok=True)
+
+# Função para substituir input() por 's' no notebook
+def substituir_input_por_s(caminho_notebook):
+    try:
+        with open(caminho_notebook, "r", encoding="utf-8") as f:
+            notebook = nbformat.read(f, as_version=4)
+        
+        # Percorrer as células e substituir input() por "s"
+        for cell in notebook.cells:
+            if cell.cell_type == "code" and "input(" in cell.source:
+                cell.source = cell.source.replace("input(", "'s'  # Automático substituindo input(")
+        
+        # Salvar as alterações
+        with open(caminho_notebook, "w", encoding="utf-8") as f:
+            nbformat.write(notebook, f)
+        print(f"Alterações feitas no notebook {caminho_notebook}")
+    except Exception as e:
+        print(f"Erro ao processar o notebook {caminho_notebook}: {e}")
 
 # Função para executar um notebook
 def executar_notebook(nome_notebook, diretorio):
@@ -30,9 +46,11 @@ def executar_notebook(nome_notebook, diretorio):
         print(f"Erro: O notebook {nome_notebook} não foi encontrado no diretório {diretorio}.")
         return
     
+    # Substituir input() por "s" antes da execução
+    substituir_input_por_s(caminho_notebook)
+    
     try:
         print(f"Executando o notebook {nome_notebook} em {diretorio}...")
-        # Adicionado --output-dir para salvar os notebooks gerados na pasta output_dir
         subprocess.run(
             [
                 'jupyter', 'nbconvert', '--to', 'notebook', '--execute',
