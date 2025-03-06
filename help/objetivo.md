@@ -26,7 +26,7 @@
 
 - **3 arquivos CSV simulados**:
   - **cliente.csv**: id_cliente, nome_cliente, email, telefone.
-  - **produtos.csv**: id_produto, nome_produto, categoria, preco.
+  - **produtos.csv**: id_produto, nome_produto, ~~categoria~~, preco.
   - **transacoes.csv**: id_transacao, id_cliente, id_produto, quantidade, data_transacao (particionado em 3 zips: transacoes_1, transacoes_2, transacoes_3).
   
 - **Script SQL** para criação das tabelas iniciais no PostgreSQL.
@@ -55,7 +55,7 @@
 
 Crie as seguintes **consultas SQL** no banco de dados final:
 
-- Receita total por **categoria de produto**.
+- ~~Receita total por categoria de produto.~~
 - Top 5 produtos **mais vendidos** em um período de tempo.
 - Número de **clientes ativos** (aqueles que realizaram pelo menos 1 compra) nos últimos 3 meses.
 
