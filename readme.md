@@ -91,22 +91,22 @@ Crie as seguintes **consultas SQL** no banco de dados final:
 ### **Critérios de Avaliação**
 
 #### **Completude Técnica**:
-- O pipeline atende aos **requisitos funcionais**?
-- As consultas fornecem os **resultados corretos**?
+- O pipeline **deve atender** aos **requisitos funcionais**.
+- As consultas **devem fornecer** os **resultados corretos**.
 
 #### **Qualidade do Código**:
-- **Estrutura e organização** do código.
-- **Tratamento de erros**.
-- Uso de **boas práticas de desenvolvimento**.
+- **Deve haver** uma **estrutura e organização** adequadas do código.
+- **Deve haver** um **tratamento de erros** eficiente.
+- O código **deve seguir** as **boas práticas de desenvolvimento**.
 
 #### **Eficiência**:
-- O pipeline e as consultas foram **otimizados para desempenho**?
+- O pipeline e as consultas **devem ser otimizados para desempenho**.
 
 #### **Documentação**:
-- O **README** fornece **instruções claras** e detalhadas?
+- O **README** **deve fornecer** **instruções claras** e detalhadas.
 
 #### **Criatividade e Inovação**:
-- O candidato utilizou **estratégias diferenciadas** para resolver os problemas?
+- O candidato **deve utilizar** **estratégias diferenciadas** para resolver os problemas.
 
 
 ## ⚙️ Ferramentas Utilizadas
