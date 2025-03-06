@@ -167,6 +167,11 @@ Para executar este projeto, você precisará dos seguintes requisitos:
 - Bibliotecas listadas em `requirements.txt`
 - Docker (para uso com `docker-compose.yml`)
 
+
+# 📍 Escopo dos processos realizados no projeto
+![Escopo dos processos realizados no projeto](image/processo_tle_db.png)
+
+
 ## 📥 Como Rodar o Projeto
 
 ### 1️⃣ Clone o repositório
@@ -199,41 +204,38 @@ Se não estiver instalado, siga a [a documentação do python](https://www.pytho
 
 ## 4️⃣ Instale o `virtualenv`:
 
-    ``` bash
-    
-    ### Ambiente Virtual
-
-    pip install virtualenv
-    ```
+  ```bash
+  ### Ambiente Virtual
+  pip install virtualenv
+  ```
 
 ## 5️⃣ **Crie o ambiente virtual**:
 
-    ```bash
-    virtualenv .venv
-    ou
-    python3 -m venv .venv
-
-    ```
+  ```bash
+  virtualenv .venv
+  ###ou
+  python3 -m venv .venv
+  ```
 
 ## 6️⃣ **Ative o ambiente virtual**:
 
-    - **No Linux**:
+  - **No Linux**:
     
-      ```bash
-      source .venv/bin/activate
-      ```
+    ```bash
+    source .venv/bin/activate
+    ```
     
-    - **No Windows**:
+  - **No Windows**:
     
-      ```bash
-      venv\Scripts\activate
-      ```
+    ```
+    venv\Scripts\activate
+    ```
 
 ## 7️⃣ **Instale as dependências do projeto**:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+  ```bash
+  pip install -r requirements.txt
+  ```
 
 ## 8️⃣ **Subindo o Docker Compose:**
 
@@ -254,7 +256,7 @@ e também:
 ```bash
 docker logs 
 ```
-## 9️⃣ ** Execute o scritp principal de TLE (Transform, Load & Extract) **
+## 9️⃣ **Execute o scritp principal de TLE (Transform, Load & Extract)**
 
 Entre no diretório ETL usando:
 
@@ -266,7 +268,8 @@ e Execute o script principal a qual está que puxa todos os outros scritps de ex
 python main.py
 ```
 
-### Após estes passos o banco de dados já estará no ar, populado, otimizado, com uma tabela adicional para facilitação das consultas e pronto para consulta.
+#### ✅ Após estes passos o banco de dados já estará no ar, populado, otimizado, com uma tabela adicional para facilitação das consultas e pronto para consulta. 
+---
 
 ## 🔌 Conectando ao Banco de Dados
 
@@ -293,6 +296,48 @@ Para facilitar a interação com o banco de dados e realizar consultas SQL, reco
 
 Essas ferramentas vão facilitar a visualização, manipulação e execução de consultas SQL diretamente no banco de dados.
 
+# Possíveis Bugs e Soluções
+
+Esta parte do documento descreve alguns bugs que podem ocorrer no projeto e como resolvê-los.
+
+---
+
+## 1. Problemas ao Subir o Banco de Dados via Main
+
+**Descrição:**
+Ao subir o banco de dados utilizando o script principal (`main.py`), podem surgir erros que impedem a execução completa das etapas de ETL.
+
+**Solução:**
+- Caso ocorra algum erro, execute os scripts separadamente na seguinte ordem:
+  
+  1. **Transformação**: Execute os notebooks localizados no diretório `2_transform`.
+  2. **Carga**: Execute os notebooks localizados no diretório `3_load`.
+  3. **Extração**: Execute os notebooks localizados no diretório `1_extract`.
+  
+      **obs. :** Para subir o Load corretamente, é nescessário que todos os processos do diretório `2_transform` estejam executados corretamentes os csv prontos estejam corretamentes salvos no diretório `final_data`.
+
+---
+
+## 2. Bug ao Popular ou Atualizar o Banco de Dados com `REPLACE`
+
+**Descrição:**
+Ao tentar popular ou atualizar o banco de dados utilizando a instrução SQL `REPLACE`, erros podem ocorrer, como:
+- Violação de chaves primárias.
+- Perda de registros relacionados.
+
+**Solução:**
+- Revise os índices e chaves primárias para garantir que estão configurados corretamente.
+- Antes de executar a operação `REPLACE`, certifique-se de que os dados existentes sejam removidos ou atualizados manualmente para evitar conflitos.
+- Em caso de persistencia do BUG, drop a tabela e suba novamente conforme a tabela dropada e utilizando separadamente o script da tabela no diretório `3_load`
+- Se necessário, utilize `INSERT ... ON CONFLICT` para resolver conflitos de maneira controlada.
+
+---
+
+## Recomendação Geral
+
+Mantenha o ambiente de desenvolvimento bem documentado e teste cada etapa separadamente antes de executá-las no ambiente de produção. Isso reduzirá o risco de falhas e facilitará a identificação de erros.
+
+
 ## 📚 Informações Adicionais
 
 Na pasta `help`, você encontrará uma série de informações úteis que podem te ajudar a compreender melhor os dados utilizados no projeto. Essas informações incluem: 
@@ -310,6 +355,10 @@ Na pasta `help`, você encontrará uma série de informações úteis que podem 
 
 - **E-mail**: [alexkrypto.ti@gmail.com](mailto:alexkrypto.ti@gmail.com)  
 - **LinkedIn**: [Alex Miqueias](https://www.linkedin.com/in/alexmiqueias/)
+<div align="center">
+    <img src="https://media.licdn.com/dms/image/v2/D4D03AQEYgioH52WOMg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731176172121?e=1746662400&v=beta&t=n6ldvkbtfG9zTA2408xBgUcGpytdW4I6sQBBJPkbEq8" alt="Foto perfil Linkedin" width="150" style="border-radius: 50%;">
+</div>
+
 
 Agradeço por sua atenção e interesse neste projeto! 😊
 

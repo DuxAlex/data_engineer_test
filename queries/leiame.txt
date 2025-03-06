@@ -1,0 +1,1 @@
+Este Diretório armazenará os scripts em python e SQL para consultar de dados no banco de dados.
