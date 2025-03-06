@@ -355,7 +355,7 @@ Na pasta `help`, você encontrará uma série de informações úteis que podem 
 
 - **E-mail**: [alexkrypto.ti@gmail.com](mailto:alexkrypto.ti@gmail.com)  
 - **LinkedIn**: [Alex Miqueias](https://www.linkedin.com/in/alexmiqueias/)
-<div align="center">
+<div align="left">
     <img src="https://media.licdn.com/dms/image/v2/D4D03AQEYgioH52WOMg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1731176172121?e=1746662400&v=beta&t=n6ldvkbtfG9zTA2408xBgUcGpytdW4I6sQBBJPkbEq8" alt="Foto perfil Linkedin" width="150" style="border-radius: 50%;">
 </div>
 
