@@ -1,0 +1,5 @@
+Explicação da consulta:
+Uso de UNION ALL: Como as tabelas transacoes_2020, transacoes_2021, etc., contêm dados de diferentes anos, usamos UNION ALL para combinar as transações de todos os anos no CTE todas_transacoes. UNION ALL é mais eficiente que UNION porque não faz a verificação de duplicatas.
+Filtro por data_transacao: O filtro pelo período de tempo (data_transacao BETWEEN '2024-01-01' AND '2024-12-31') é aplicado diretamente nas tabelas de transações.
+Somando as quantidades: Utilizamos SUM(t.quantidade) para obter o total de vendas por produto no período selecionado.
+Otimização: Para grandes volumes de dados, a utilização de UNION ALL e a criação de um CTE evitam a repetição de dados e ajudam a melhorar a performance.

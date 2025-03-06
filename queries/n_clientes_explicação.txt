@@ -1,0 +1,13 @@
+Descrição da Consulta: Número de Clientes Ativos nos Últimos 3 Meses
+Esta consulta tem como objetivo calcular o número de clientes ativos nos últimos 3 meses anteriores a 2025-01-01 (ou seja, entre 1º de outubro de 2024 e 31 de dezembro de 2024). Ela busca identificar os clientes que realizaram pelo menos uma transação dentro deste período, considerando as transações armazenadas nas tabelas de transações de 2020 a 2024.
+
+Estrutura da Consulta
+Seleção de Clientes Ativos:
+
+Para cada uma das tabelas de transações (transacoes_2020, transacoes_2021, transacoes_2022, transacoes_2023, transacoes_2024), é realizada uma busca pelos id_cliente cujas transações ocorreram no intervalo de 1º de outubro de 2024 a 31 de dezembro de 2024.
+Uso de UNION ALL:
+
+Os resultados de cada tabela são combinados utilizando UNION ALL, o que garante que todas as transações sejam incluídas sem remoção de duplicatas (clientes podem realizar múltiplas transações, e todas são consideradas).
+Contagem de Clientes Distintos:
+
+A consulta utiliza COUNT(DISTINCT t.id_cliente) para contar o número total de clientes distintos que realizaram transações dentro do período especificado. Duplicatas são evitadas, considerando apenas os clientes únicos.

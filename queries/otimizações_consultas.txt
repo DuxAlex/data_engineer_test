@@ -1,0 +1,5 @@
+Otimizações para grandes volumes de dados:
+Uso de UNION ALL em vez de UNION: Isso evita a sobrecarga de verificação de duplicatas e melhora a performance ao combinar dados de várias tabelas de transações.
+Índices: Certifique-se de que há índices nas colunas id_produto, id_cliente, e data_transacao, que são frequentemente usadas nas consultas. Isso ajuda a melhorar a performance das junções e das buscas de dados.
+Armazenamento em partições: Se as tabelas de transações forem muito grandes, considere particionar as tabelas transacoes por ano, como já é feito (ex: transacoes_2020, transacoes_2021, etc.). Isso facilita a leitura de dados relevantes para cada ano e acelera a consulta.
+Uso de CTE (Common Table Expressions): O uso de CTEs, como em todas_transacoes, facilita a leitura e organização da consulta, além de melhorar a performance em algumas situações de grandes volumes de dados, pois o banco de dados pode otimizar melhor a execução.
