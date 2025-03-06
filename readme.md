@@ -129,25 +129,36 @@ Crie as seguintes **consultas SQL** no banco de dados final:
   - `setup.sql_teste_com otimizacao.txt`: Script de configuração para testes com otimização.
 
 - **ETL/**: Contém o código principal do processo ETL.
-  - `main.py`: Script principal para execução do processo ETL.
-  - **1_extract/**: Contém notebooks para extração de dados.
-    - `1_extract_db_to_local.ipynb`: Notebook para extração de dados do banco de dados para local.
-  - **2_transform/**: Diretório para notebooks de transformação de dados.
-  - **3_load/**: Diretório para notebooks de carregamento de dados.
-  - **4_optimize/**: Diretório para notebooks de otimização de dados.
+ 
+## Descrição dos Notebooks
+
+### 1_extract/
+- **1_extract_db_to_local.ipynb**: Notebook responsável por extrair dados de um banco de dados e salvá-los localmente.
+
+### 2_transform/
+- **1_transform_csv_cliente.ipynb**: Transformação de dados de clientes.
+- **2_transform_csv_produtos.ipynb**: Transformação de dados de produtos.
+- **3_transform_csv_transacoes.ipynb**: Transformação de dados de transações.
+- **4_transform_total_por_cliente.ipynb**: Transformação para calcular o total por cliente.
+
+### 3_load/
+- **1_load_cliente.ipynb**: Carregamento de dados de clientes.
+- **2_load_produtos.ipynb**: Carregamento de dados de produtos.
+- **3_load_transacao.ipynb**: Carregamento de dados de transações.
+- **4_load_total_por_cliente.ipynb**: Carregamento do total por cliente.
+
+### 4_optimize/
+- **1_optimize_tabelas.ipynb**: Notebook responsável por otimizar as tabelas de dados.
+
+### output_notebooks/
+- **(notebooks gerados após execução)**: Diretório onde os notebooks gerados após a execução são salvos.
+
+### main.py
+- **main.py**: Script principal que orquestra a execução dos notebooks, substituindo chamadas de `input()` por um valor padrão e executando os notebooks em sequência.
+
   - **data_from_db/**: Diretório para armazenar dados extraídos do banco de dados.
   - **final_data/**: Diretório para armazenar dados finais após transformação e otimização.
-  - **output_notebooks/**: Diretório para armazenar notebooks de saída.
   - **raw_data/**: Diretório para armazenar dados brutos.
-
-- **help/**: Contém notebooks e arquivos de ajuda.
-  - `ajuste_ids_csv.ipynb`: Notebook para ajuste de IDs em arquivos CSV.
-  - `estrutura dos CSVs e do DB.txt`: Descrição da estrutura dos arquivos CSV e do banco de dados.
-  - `objetivo.md`: Documento descrevendo o objetivo do projeto.
-  - `teste_conexao_db.ipynb`: Notebook para testar a conexão com o banco de dados.
-  - `teste_diretorios.ipynb`: Notebook para testar diretórios.
-  - `teste_pandas.ipynb`: Notebook para testar funcionalidades do Pandas.
-  - `verifica_otimização.ipynb`: Notebook para verificar otimizações.
 
 - **image/**: Contém imagens utilizadas no projeto.
   - `logo-magazord.png`: Logo da Magazord.
@@ -336,6 +347,14 @@ Mantenha o ambiente de desenvolvimento bem documentado e teste cada etapa separa
 ## 📚 Informações Adicionais
 
 Na pasta `help`, você encontrará uma série de informações úteis que podem te ajudar a compreender melhor os dados utilizados no projeto. Essas informações incluem: 
+- **help/**: Contém notebooks e arquivos de ajuda.
+  - `ajuste_ids_csv.ipynb`: Notebook para ajuste de IDs em arquivos CSV.
+  - `estrutura dos CSVs e do DB.txt`: Descrição da estrutura dos arquivos CSV e do banco de dados.
+  - `objetivo.md`: Documento descrevendo o objetivo do projeto.
+  - `teste_conexao_db.ipynb`: Notebook para testar a conexão com o banco de dados.
+  - `teste_diretorios.ipynb`: Notebook para testar diretórios.
+  - `teste_pandas.ipynb`: Notebook para testar funcionalidades do Pandas.
+  - `verifica_otimização.ipynb`: Notebook para verificar otimizações.
 
 ## Contribuição
 ### Para contribuir com este projeto, por favor, siga os passos abaixo:
