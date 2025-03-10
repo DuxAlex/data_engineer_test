@@ -321,13 +321,13 @@ Estrutura do Diretório:
     - Para executar as consultas SQL, basta rodar o script Python correspondente. Os scripts Python cuidam da conexão com o banco de dados, execução das consultas e manipulação dos resultados.
 
 2. **Dependências**:
-    - As dependências para rodar os scripts Python incluem bibliotecas como `psycopg2` ou `SQLAlchemy` para a interação com o banco de dados, além de qualquer outra biblioteca utilizada nos scripts Python (ex: `pandas` para análise de dados).
+    - As dependências para rodar os scripts Python incluem bibliotecas como `psycopg2` ou `SQLAlchemy` para a interação com o banco de dados.
 
 3. **Personalização**:
     - Caso seja necessário ajustar a consulta SQL, basta modificar os arquivos `.sql`. Qualquer alteração nas consultas pode ser testada diretamente nos scripts Python correspondentes.
 
 4. **Resultado**:
-    - Os scripts Python irão retornar os resultados das consultas em formato adequado, como tabelas ou gráficos, dependendo da implementação no script.
+    - Os scripts Python irão retornar os resultados das consultas em formato de tabelas.
 
 Basta executar no terminal:
 ```bash
