@@ -277,6 +277,74 @@ python main.py
 #### ✅ Após estes passos o banco de dados já estará no ar, populado, otimizado, com uma tabela adicional para facilitação das consultas e pronto para consulta. 
 ---
 
+# Consulta no banco de dados
+Aqui você verá como fazer consultas no banco de dados utilizando os scritps ja prontos no diretório queries ou se conectando no banco via dbeaver e a extensão mysql do vscode.
+
+## Estrutura de Diretórios e Arquivos de Consultas
+
+Esta pasta contém os scripts e arquivos de consulta SQL para interagir com o banco de dados. 
+Os arquivos Python são utilizados para executar as consultas SQL e realizar as operações necessárias.
+```
+Estrutura do Diretório:
+├── leiame.txt                           # Arquivo de documentação geral sobre o conteúdo da pasta
+├── n_clientes_ativos_3meses copy.py     # Script Python para executar a consulta sobre clientes ativos nos últimos 3 meses
+├── n_clientes_ativos_3meses.sql         # Arquivo SQL com a consulta para obter o número de clientes ativos nos últimos 3 meses
+├── top_5_vendidos_por_período.py        # Script Python para executar a consulta sobre os 5 produtos mais vendidos por período (ano)
+└── top_5_vendidos_por_período.sql       # Arquivo SQL com a consulta para obter os 5 produtos mais vendidos por ano
+```
+
+## Descrição dos Arquivos:
+
+1. **leiame.txt**:
+    - Este arquivo contém uma breve explicação sobre a pasta, como utilizar os scripts, dependências necessárias e outras informações gerais. 
+    - Sua função é orientar os desenvolvedores ou usuários sobre a estrutura e os objetivos da pasta.
+
+2. **n_clientes_ativos_3meses.sql**:
+    - Este arquivo contém uma consulta SQL que calcula o número de clientes ativos nos últimos 3 meses.
+    - A consulta considera a tabela de transações e utiliza a data de transação para identificar os clientes ativos no período desejado.
+
+3. **n_clientes_ativos_3meses.py**:
+    - Este script Python é responsável por executar a consulta SQL presente em **n_clientes_ativos_3meses.sql**.
+    - Ele se conecta ao banco de dados, executa a consulta e retorna o resultado, podendo ser adaptado para outras operações de análise dos dados.
+
+4. **top_5_vendidos_por_período.sql**:
+    - Este arquivo contém a consulta SQL que retorna os 5 produtos mais vendidos por ano, considerando as transações de 2020 a 2024.
+    - A consulta utiliza a função `RANK()` para classificar os produtos por volume de vendas e filtra os 5 mais vendidos por ano.
+
+5. **top_5_vendidos_por_período.py**:
+    - Este script Python é responsável por executar a consulta SQL presente em **top_5_vendidos_por_período.sql**.
+    - O script se conecta ao banco de dados, executa a consulta, processa os resultados e pode gerar relatórios ou gráficos baseados nos dados obtidos.
+
+## Como Usar:
+
+1. **Execução das Consultas**:
+    - Para executar as consultas SQL, basta rodar o script Python correspondente. Os scripts Python cuidam da conexão com o banco de dados, execução das consultas e manipulação dos resultados.
+
+2. **Dependências**:
+    - As dependências para rodar os scripts Python incluem bibliotecas como `psycopg2` ou `SQLAlchemy` para a interação com o banco de dados, além de qualquer outra biblioteca utilizada nos scripts Python (ex: `pandas` para análise de dados).
+
+3. **Personalização**:
+    - Caso seja necessário ajustar a consulta SQL, basta modificar os arquivos `.sql`. Qualquer alteração nas consultas pode ser testada diretamente nos scripts Python correspondentes.
+
+4. **Resultado**:
+    - Os scripts Python irão retornar os resultados das consultas em formato adequado, como tabelas ou gráficos, dependendo da implementação no script.
+
+Basta executar no terminal:
+```bash
+### Entre no diretório onde se encontra os scripts de consulta.
+cd queries/
+
+### Após isto execute no terminal
+
+### Para consultar o numero de clientes ativos nos ultimos 3 meses.
+python n_clientes_ativos_3meses.py
+### Para consultar o top 5 produtos mais vendidos por periodo em anos.
+python top_5_vendidos_por_período.py
+```
+
+
+
+
 ## 🔌 Conectando ao Banco de Dados
 
 Para facilitar a interação com o banco de dados e realizar consultas SQL, recomendamos utilizar ferramentas como o **DBeaver** ou a extensão **MySQL** do VSCode, chamada **Weijan Chen** disponível no [Marketplace do VSCode](https://marketplace.visualstudio.com/items?itemName=weijanchen.database-client).
